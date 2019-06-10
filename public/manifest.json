@@ -1,15 +1,38 @@
 {
   "manifest_version": 2,
-  "name": "SFS-MOE",
+  "name": "Smart Signature Addon",
   "version": "0.0.1",
   "browser_action": {
+    "default_title": "SS",
     "default_popup": "index.html"
   },
   "icons": {
     "512": "/static/logo.png"
   },
+  "web_accessible_resources":[
+    "img/*.png"
+  ],  
   "permissions": [
     "storage",
-    "https://vu.sfc.keio.ac.jp/"
+    "tabs",
+    "https://vu.sfc.keio.ac.jp/",
+    "https://www.8btc.com/"
+  ],
+  "background": { 
+    "scripts": ["background.js"] 
+  },  
+  "content_scripts": [
+    {
+      "matches": ["https://www.8btc.com/*"],
+      "css": [
+        "css/style.css",
+        "css/jquery-ui.min.css"
+      ],      
+      "js": [
+        "js/jquery-3.2.1.min.js",
+        "js/jquery-ui.min.js", 
+        "js/signature.js"
+      ]
+    }
   ]
 }
